@@ -2,12 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import App from './App';
+import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import {combineReducers, createStore} from 'redux';
+import employeeReducer from './reducers/employeeReducer';
+
+const reducers = combineReducers({
+    employeeState: employeeReducer
+});
+
+const initialState = {
+    employeeState: []
+};
+
+const store = createStore(
+    reducers,
+    initialState,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>,
+    <Provider store={ store }>
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    </Provider>,
     document.getElementById('root')
 );
 
