@@ -7,9 +7,10 @@ const CustomTableRow = ({ row, handleRowClick, isActive }) => (
         key={ row.id }
         onClick={ event => handleRowClick(event, row.id) }
         className={
-            isActive() ?
+            'table__row ' +
+            (isActive() ?
                 'table__row_checked'
-                : ''
+                : '')
         }
     >
         {Object.keys(row)

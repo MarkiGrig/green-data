@@ -4,7 +4,11 @@
         transition: background-color $transition-time, color $transition-time;
 
         &_checked {
-            background: #86b5ff;
+            background-color: #3f51b5;
+
+            td {
+                color: white;
+            }
         }
     }
 }
