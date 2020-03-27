@@ -7,8 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import Typography from '@material-ui/core/Typography';
 import TableRow from '@material-ui/core/TableRow';
+import './Table.scss';
 
-const Table = ({ data, columns }) => (
+const Table = ({ data, columns, row }) => (
     <Paper>
         <TableContainer>
             <TableTemplate stickyHeader>
@@ -19,23 +20,13 @@ const Table = ({ data, columns }) => (
                                 key={ column.id }
                                 align='left'
                             >
-                                <Typography variant='h6'>{ column.label }</Typography>
+                                <Typography variant='h6'>{column.label}</Typography>
                             </TableCell>
                         ))}
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.map(employee => (
-                        <TableRow key={ employee.id }>
-                            {Object.keys(employee)
-                                .filter(key => key !== 'id')
-                                .map((employeeProperty, index) => (
-                                    <TableCell key={ employee[employeeProperty] + columns[index].name }>
-                                        {employee[employeeProperty]}
-                                    </TableCell>
-                                ))}
-                        </TableRow>
-                    ))}
+                    {data.map(employee => row(employee, employee.id + 'Container'))}
                 </TableBody>
             </TableTemplate>
         </TableContainer>

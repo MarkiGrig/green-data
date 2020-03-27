@@ -1,0 +1,10 @@
+.table {
+    $transition-time: 0.3s;
+    &__row {
+        transition: background-color $transition-time, color $transition-time;
+
+        &_checked {
+            background: #86b5ff;
+        }
+    }
+}

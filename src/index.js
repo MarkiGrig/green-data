@@ -6,13 +6,35 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {combineReducers, createStore} from 'redux';
 import employeeReducer from './reducers/employeeReducer';
+import currentEmployeeReducer from './reducers/currentEmployeeReducer';
 
 const reducers = combineReducers({
-    employeeState: employeeReducer
+    employeeState: employeeReducer,
+    currentEmployeeState: currentEmployeeReducer
 });
 
 const initialState = {
-    employeeState: []
+    currentEmployeeState: {},
+    employeeState: [
+        {
+            id: 'air',
+            name: 'Peter Griffin',
+            position: 'Cleaner',
+            birthDay: null,
+            sex: null,
+            isDismissed: null,
+            colleagues: null
+        },
+        {
+            id: 'yrg',
+            name: 'Peter Griffin',
+            position: 'Cleaner',
+            birthDay: null,
+            sex: null,
+            isDismissed: null,
+            colleagues: null
+        }
+    ]
 };
 
 const store = createStore(
