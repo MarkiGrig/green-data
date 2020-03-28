@@ -18,11 +18,11 @@ const initialState = {
     employeeState: [
         {
             id: 'air',
-            name: 'Peter Griffin',
+            name: 'Peter Griffinggggggg gggggggggggg ggggggggg gggggggggggggg ggggggggg gggggggggggggg',
             position: 'Cleaner',
             birthDay: '12.12.2012',
-            sex: null,
-            isDismissed: null,
+            sex: 'Мужской',
+            isDismissed: 'Нет',
             colleagues: null
         },
         {

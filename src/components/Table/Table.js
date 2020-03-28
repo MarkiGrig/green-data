@@ -11,7 +11,7 @@ import './Table.scss';
 
 const Table = ({ data, columns, row }) => (
     <Paper>
-        <TableContainer>
+        <TableContainer className={ 'table' }>
             <TableTemplate stickyHeader>
                 <TableHead>
                     <TableRow>
@@ -19,8 +19,13 @@ const Table = ({ data, columns, row }) => (
                             <TableCell
                                 key={ column.id }
                                 align='left'
+                                className={ 'table__header-cell-container ' +
+                                    `table__header-cell-container_${column.id}`
+                                }
                             >
-                                <Typography variant='h6'>{column.label}</Typography>
+                                <div className={ `table__header-cell table__header-cell_${column.id}` }>
+                                    <Typography variant='h6'>{column.label}</Typography>
+                                </div>
                             </TableCell>
                         ))}
                     </TableRow>

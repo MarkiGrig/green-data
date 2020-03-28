@@ -1,5 +1,8 @@
 .table {
     $transition-time: 0.3s;
+
+    max-height: 440px;
+
     &__row {
         transition: background-color $transition-time, color $transition-time;
 
@@ -10,5 +13,62 @@
                 color: white;
             }
         }
+    }
+
+    &__header-cell-container,
+    &__data-cell-container {
+        &_fullName {
+            $width: 350px;
+            width: $width;
+            .table__header-cell,
+            .table__data-cell {
+                width: $width;
+            }
+        }
+
+        &_position {
+            $width: 153px;
+            width: $width;
+            .table__header-cell,
+            .table__data-cell {
+                width: $width;
+            }
+        }
+
+        &_birthDate {
+            $width: 144px;
+            width: $width;
+            .table__header-cell,
+            .table__data-cell {
+                width: $width;
+            }
+        }
+
+        &_sex {
+            $width: 80px;
+            width: $width;
+            .table__header-cell,
+            .table__data-cell {
+                width: $width;
+            }
+        }
+
+        &_isDismissed {
+            $width: 100px;
+            width: $width;
+            .table__header-cell,
+            .table__data-cell {
+                width: $width;
+            }
+        }
+    }
+
+    &__header-cell,
+    &__data-cell {
+        margin: 0;
+    }
+
+    &__data-cell {
+        overflow-x: auto;
     }
 }

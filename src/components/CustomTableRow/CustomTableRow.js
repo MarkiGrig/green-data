@@ -36,10 +36,15 @@ const CustomTableRow = ({ row, handleRowClick, isActive, columns }) => (
                 <TableCell
                     key={ `${row.id}_${index}` }
                     align={ chooseAlign(columns[index].content) }
+                    className={ 'table__data-cell-container'
+                        + `table__header-cell-container_${columns[index].id}`
+                    }
                 >
-                    {columns[index].required ?
-                        row[employeeProperty] ? row[employeeProperty] : 'Обязательное поле'
-                        : row[employeeProperty]}
+                    <div className={ `table__data-cell table__data-cell_${columns[index].id}` }>
+                        {columns[index].required ?
+                            row[employeeProperty] ? row[employeeProperty] : 'Обязательное поле'
+                            : row[employeeProperty]}
+                    </div>
                 </TableCell>
             ))}
     </TableRow>
