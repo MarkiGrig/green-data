@@ -2,7 +2,8 @@ import React from 'react';
 import Controls from './Controls';
 import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {removeEmployeeAction, addEmployeeAction} from '../../actions/employeeActions';
-import {clearCurrentEmployeeAction} from '../../actions/currentEmployeeActions';
+import {clearCurrentEmployeeAction, selectEmployeeAction} from '../../actions/currentEmployeeActions';
+import nanoid from 'nanoid';
 
 const ControlsContainer = () => {
     const dispatch = useDispatch();
@@ -10,15 +11,20 @@ const ControlsContainer = () => {
     const currentEmployee = useSelector(state => state.currentEmployeeState, shallowEqual);
 
     const addEmployee = () => {
-        dispatch(addEmployeeAction({
-            id: 'yrg',
-            name: 'Peter Griffin',
-            position: 'Cleaner',
+        const id = nanoid();
+
+        const newEmployee = {
+            id: id,
+            name: null,
+            position: null,
             birthDay: null,
             sex: null,
             isDismissed: null,
             colleagues: null
-        }));
+        };
+
+        dispatch(addEmployeeAction(newEmployee));
+        dispatch(selectEmployeeAction(newEmployee));
     };
 
     const removeEmployee = () => {
