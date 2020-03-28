@@ -2,7 +2,7 @@ import React from 'react';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 
-const CustomTableRow = ({ row, handleRowClick, isActive }) => (
+const CustomTableRow = ({ row, handleRowClick, isActive, columns }) => (
     <TableRow
         key={ row.id }
         onClick={ event => handleRowClick(event, row.id) }
@@ -17,7 +17,9 @@ const CustomTableRow = ({ row, handleRowClick, isActive }) => (
             .filter(key => key !== 'id')
             .map((employeeProperty, index) => (
                 <TableCell key={ `${row.id}_${index}` }>
-                    {row[employeeProperty]}
+                    {columns[index].required ?
+                        row[employeeProperty] ? row[employeeProperty] : 'Обязательное поле'
+                        : row[employeeProperty]}
                 </TableCell>
             ))}
     </TableRow>

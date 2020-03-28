@@ -4,12 +4,12 @@ import { shallowEqual, useSelector } from 'react-redux';
 import CustomTableRowContainer from '../CustomTableRow/CustomTableRowContainer';
 
 const columns = [
-    { id: 'fullName',  label: 'ФИО' },
-    { id: 'position', label: 'Должность' },
-    { id: 'birthDate', label: 'Дата рождения' },
-    { id: 'sex', label: 'Пол' },
-    { id: 'isDismissed', label: 'Уволен' },
-    { id: 'colleagues', label: 'Коллеги'}
+    { id: 'fullName',  label: 'ФИО', required: true },
+    { id: 'position', label: 'Должность', required: true },
+    { id: 'birthDate', label: 'Дата рождения', required: false },
+    { id: 'sex', label: 'Пол', required: false },
+    { id: 'isDismissed', label: 'Уволен', required: false },
+    { id: 'colleagues', label: 'Коллеги', required: false }
 ];
 
 const EmployeeTableContainer = () => {
@@ -19,7 +19,11 @@ const EmployeeTableContainer = () => {
         <Table
             data={ employees }
             columns={ columns }
-            row={ (rowData, key) => <CustomTableRowContainer row={ rowData } key={ key }/> }
+            row={ (rowData, key) => <CustomTableRowContainer
+                row={ rowData }
+                key={ key }
+                columns={ columns }
+            /> }
         />
     );
 };

@@ -26,7 +26,10 @@ const Table = ({ data, columns, row }) => (
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {data.map(employee => row(employee, employee.id + 'Container'))}
+                    {data.map((employee) => row(
+                        employee,
+                        employee.id + 'Container'
+                    ))}
                 </TableBody>
             </TableTemplate>
         </TableContainer>
