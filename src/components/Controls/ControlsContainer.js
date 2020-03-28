@@ -38,6 +38,7 @@ const ControlsContainer = () => {
         <Controls
             addEmployee={ addEmployee }
             removeEmployee={ removeEmployee }
+            isActive={ !!currentEmployee.id }
         />
     );
 };
