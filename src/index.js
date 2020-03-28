@@ -20,7 +20,7 @@ const initialState = {
             id: 'air',
             name: 'Peter Griffin',
             position: 'Cleaner',
-            birthDay: null,
+            birthDay: '12.12.2012',
             sex: null,
             isDismissed: null,
             colleagues: null
