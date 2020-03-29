@@ -7,14 +7,29 @@ import * as serviceWorker from './serviceWorker';
 import {combineReducers, createStore} from 'redux';
 import employeeReducer from './reducers/employeeReducer';
 import currentEmployeeReducer from './reducers/currentEmployeeReducer';
+import positionsReducer from './reducers/positionsReducer';
 
 const reducers = combineReducers({
     employeeState: employeeReducer,
-    currentEmployeeState: currentEmployeeReducer
+    currentEmployeeState: currentEmployeeReducer,
+    positionsState: positionsReducer
 });
 
 const initialState = {
     currentEmployeeState: {},
+    positionsState: [
+        'Генеральный директор',
+        'Заместитель генерального директора',
+        'Глава экономического отдела',
+        'HR специалист',
+        'Senior Frontend разработчик',
+        'Middle Frontend разработчик',
+        'Junior Frontend разработчик',
+        'Senior Backend разработчик',
+        'Middle Backend разработчик',
+        'Junior Backend разработчик',
+        'Уборщик'
+    ],
     employeeState: [
         {
             id: 'air',

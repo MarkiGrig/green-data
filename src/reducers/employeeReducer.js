@@ -4,7 +4,7 @@ const employeeReducer = (state = [], action) => {
         return state.filter((item) => item.id !== action.id);
     }
     case 'ADD_EMPLOYEE': {
-        return state.concat([action.employee]);
+        return [action.employee, ...state];
     }
     default:
         return state;
