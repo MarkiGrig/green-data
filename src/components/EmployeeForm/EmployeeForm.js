@@ -14,8 +14,15 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import ListItemText from '@material-ui/core/ListItemText';
 import Input from '@material-ui/core/Input';
+import './EmployeeForm.scss';
 
-const EmployeeForm = ({ positions, employees }) => {
+const EmployeeForm = (
+    {
+        positions,
+        employees,
+        currentEmployee,
+        handleNameInput
+    }) => {
     const [selectedDate, handleDateChange] = useState(new Date(1912,0));//or null
     const [value, setValue] = React.useState('');
     const [state, setState] = React.useState({
@@ -45,15 +52,21 @@ const EmployeeForm = ({ positions, employees }) => {
     };
 
     return (
-        <Paper>
-            <TextField required label="ФИО" fullWidth defaultValue={ 'Пример' }/>
+        <Paper className='employee-form'>
+            <FormLabel className='employee-form__label'>ФИО</FormLabel>
+            <TextField
+                required
+                fullWidth
+                value={ currentEmployee.name }
+                onChange={ handleNameInput }
+            />
+            <FormLabel className='employee-form__label'>Должность</FormLabel>
             <TextField
                 select
-                label="Должность"
                 onChange={ '' }
                 fullWidth
                 required
-                value={ 'Junior Frontend разработчик' }
+                value={ currentEmployee.position }
             >
                 {positions.map(option => (
                     <MenuItem key={ option } value={ option }>
@@ -61,10 +74,10 @@ const EmployeeForm = ({ positions, employees }) => {
                     </MenuItem>
                 ))}
             </TextField>
+            <FormLabel className='employee-form__label'>Дата рождения</FormLabel>
             <KeyboardDatePicker
                 clearable
                 value={ selectedDate }
-                label="Дата рождения"
                 minDate={ new Date(1900, 0) }
                 maxDate={ new Date() }
                 format="dd.MM.yyyy"
@@ -72,14 +85,14 @@ const EmployeeForm = ({ positions, employees }) => {
                 fullWidth
             />
             <FormControl fullWidth>
-                <FormLabel>Пол</FormLabel>
+                <FormLabel className='employee-form__label'>Пол</FormLabel>
                 <RadioGroup row name="sex" value={ value } onChange={ handleRadioChange }>
                     <FormControlLabel value="Мужской" control={ <Radio color="primary"/> } label="Мужской" />
                     <FormControlLabel value="Женский" control={ <Radio color="primary"/> } label="Женский" />
                 </RadioGroup>
             </FormControl>
             <FormControl fullWidth>
-                <FormLabel>Статус</FormLabel>
+                <FormLabel className='employee-form__label'>Статус</FormLabel>
                 <FormGroup row>
                     <FormControlLabel
                         control={ <Checkbox
@@ -93,10 +106,8 @@ const EmployeeForm = ({ positions, employees }) => {
                 </FormGroup>
             </FormControl>
             <FormControl fullWidth>
-                <InputLabel id="demo-mutiple-checkbox-label">Tag</InputLabel>
+                <FormLabel className='employee-form__label'>Коллеги</FormLabel>
                 <Select
-                    labelId="demo-mutiple-checkbox-label"
-                    id="demo-mutiple-checkbox"
                     multiple
                     value={ personName }
                     onChange={ handlePersonChange }
@@ -106,7 +117,7 @@ const EmployeeForm = ({ positions, employees }) => {
                 >
                     {employees.map(name => (
                         <MenuItem key={ name.id+'select' } value={ name.name }>
-                            <Checkbox checked={ personName.indexOf(name.name) > -1 } />
+                            <Checkbox checked={ personName.indexOf(name.name) > -1 } color="primary"/>
                             <ListItemText primary={ name.name } />
                         </MenuItem>
                     ))}

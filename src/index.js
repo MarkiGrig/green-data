@@ -34,7 +34,7 @@ const initialState = {
         {
             id: 'air',
             name: 'Peter Griffinggggggg gggggggggggg ggggggggg gggggggggggggg ggggggggg gggggggggggggg',
-            position: 'Cleaner',
+            position: 'Уборщик',
             birthDay: '12.12.2012',
             sex: 'Мужской',
             isDismissed: 'Нет',
@@ -43,7 +43,7 @@ const initialState = {
         {
             id: 'yrg',
             name: 'Peter Griffin',
-            position: 'Cleaner',
+            position: 'Уборщик',
             birthDay: null,
             sex: null,
             isDismissed: null,

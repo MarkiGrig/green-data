@@ -6,3 +6,8 @@ export const selectEmployeeAction = (employee) => ({
 export const clearCurrentEmployeeAction = () => ({
     type: 'CLEAR_CURRENT-EMPLOYEE'
 });
+
+export const changeEmployeeAction = (employee) => ({
+    type: 'CHANGE_EMPLOYEE',
+    employee
+});
