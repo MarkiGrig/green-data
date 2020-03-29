@@ -10,8 +10,10 @@ function App() {
     return (
         <MuiPickersUtilsProvider utils={ DateFnsUtils }>
             <div className="App">
-                <EmployeeTableContainer />
-                <ControlsContainer />
+                <div className="App__group App__group_left">
+                    <EmployeeTableContainer />
+                    <ControlsContainer />
+                </div>
                 <EmployeeFormContainer />
             </div>
         </MuiPickersUtilsProvider>

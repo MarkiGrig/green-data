@@ -7,7 +7,7 @@ export const clearCurrentEmployeeAction = () => ({
     type: 'CLEAR_CURRENT-EMPLOYEE'
 });
 
-export const changeEmployeeAction = (employee) => ({
-    type: 'CHANGE_EMPLOYEE',
+export const changeCurrentEmployeeAction = (employee) => ({
+    type: 'CHANGE_CURRENT-EMPLOYEE',
     employee
 });

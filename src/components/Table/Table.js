@@ -10,8 +10,8 @@ import TableRow from '@material-ui/core/TableRow';
 import './Table.scss';
 
 const Table = ({ data, columns, row }) => (
-    <Paper>
-        <TableContainer className={ 'table' }>
+    <Paper className='table'>
+        <TableContainer className={ 'table__container' }>
             <TableTemplate stickyHeader>
                 <TableHead>
                     <TableRow>

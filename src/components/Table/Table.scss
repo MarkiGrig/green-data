@@ -1,7 +1,11 @@
 .table {
     $transition-time: 0.3s;
 
-    max-height: 440px;
+    height: fit-content;
+
+    &__container {
+        max-height: 440px;
+    }
 
     &__row {
         transition: background-color $transition-time, color $transition-time;

@@ -19,6 +19,34 @@ const chooseAlign = (contentType) => {
     }
 };
 
+const getCellString = (key, rowCell) => {
+    if (rowCell !== null) {
+        if (key === 'birthDay') {
+            return `${rowCell.getDate()}.${rowCell.getMonth()+1}.${rowCell.getFullYear()}`;
+        } else if (key === 'isDismissed') {
+            return rowCell ? 'Да' : 'Нет';
+        } else if (key === 'colleagues') {
+            return rowCell.join('; ');
+        } else {
+            return rowCell;
+        }
+    }
+    return null;
+};
+
+const renderItem = (required, key, rowCell) => {
+    const string = getCellString(key, rowCell);
+
+    if (required) {
+        if (string) {
+            return string;
+        } else {
+            return 'Обязательное поле';
+        }
+    }
+    return string;
+};
+
 const CustomTableRow = ({ row, handleRowClick, isActive, columns }) => (
     <TableRow
         key={ row.id }
@@ -41,9 +69,7 @@ const CustomTableRow = ({ row, handleRowClick, isActive, columns }) => (
                     }
                 >
                     <div className={ `table__data-cell table__data-cell_${columns[index].id}` }>
-                        {columns[index].required ?
-                            row[employeeProperty] ? row[employeeProperty] : 'Обязательное поле'
-                            : row[employeeProperty]}
+                        { renderItem(columns[index].required, employeeProperty, row[employeeProperty]) }
                     </div>
                 </TableCell>
             ))}

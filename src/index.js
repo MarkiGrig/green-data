@@ -16,7 +16,15 @@ const reducers = combineReducers({
 });
 
 const initialState = {
-    currentEmployeeState: {},
+    currentEmployeeState: {
+        id: '',
+        name: '',
+        position: '',
+        birthDay: null,
+        sex: '',
+        isDismissed: false,
+        colleagues: []
+    },
     positionsState: [
         'Генеральный директор',
         'Заместитель генерального директора',
@@ -33,21 +41,21 @@ const initialState = {
     employeeState: [
         {
             id: 'air',
-            name: 'Peter Griffinggggggg gggggggggggg ggggggggg gggggggggggggg ggggggggg gggggggggggggg',
+            name: 'Peter Griffin Evil',
             position: 'Уборщик',
-            birthDay: '12.12.2012',
+            birthDay: new Date(2012, 11, 12),
             sex: 'Мужской',
-            isDismissed: 'Нет',
-            colleagues: null
+            isDismissed: true,
+            colleagues: []
         },
         {
             id: 'yrg',
             name: 'Peter Griffin',
-            position: 'Уборщик',
+            position: 'Junior Backend разработчик',
             birthDay: null,
-            sex: null,
-            isDismissed: null,
-            colleagues: null
+            sex: '',
+            isDismissed: false,
+            colleagues: []
         }
     ]
 };
