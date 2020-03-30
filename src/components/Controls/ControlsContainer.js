@@ -15,12 +15,12 @@ const ControlsContainer = () => {
 
         const newEmployee = {
             id: id,
-            name: null,
-            position: null,
+            name: '',
+            position: '',
             birthDay: null,
-            sex: null,
-            isDismissed: null,
-            colleagues: null
+            sex: '',
+            isDismissed: false,
+            colleagues: []
         };
 
         dispatch(addEmployeeAction(newEmployee));

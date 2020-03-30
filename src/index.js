@@ -7,32 +7,55 @@ import * as serviceWorker from './serviceWorker';
 import {combineReducers, createStore} from 'redux';
 import employeeReducer from './reducers/employeeReducer';
 import currentEmployeeReducer from './reducers/currentEmployeeReducer';
+import positionsReducer from './reducers/positionsReducer';
 
 const reducers = combineReducers({
     employeeState: employeeReducer,
-    currentEmployeeState: currentEmployeeReducer
+    currentEmployeeState: currentEmployeeReducer,
+    positionsState: positionsReducer
 });
 
 const initialState = {
-    currentEmployeeState: {},
+    currentEmployeeState: {
+        id: '',
+        name: '',
+        position: '',
+        birthDay: null,
+        sex: '',
+        isDismissed: false,
+        colleagues: []
+    },
+    positionsState: [
+        'Генеральный директор',
+        'Заместитель генерального директора',
+        'Глава экономического отдела',
+        'HR специалист',
+        'Senior Frontend разработчик',
+        'Middle Frontend разработчик',
+        'Junior Frontend разработчик',
+        'Senior Backend разработчик',
+        'Middle Backend разработчик',
+        'Junior Backend разработчик',
+        'Уборщик'
+    ],
     employeeState: [
         {
             id: 'air',
-            name: 'Peter Griffinggggggg gggggggggggg ggggggggg gggggggggggggg ggggggggg gggggggggggggg',
-            position: 'Cleaner',
-            birthDay: '12.12.2012',
+            name: 'Peter Griffin Evil',
+            position: 'Уборщик',
+            birthDay: new Date(2012, 11, 12),
             sex: 'Мужской',
-            isDismissed: 'Нет',
-            colleagues: null
+            isDismissed: true,
+            colleagues: []
         },
         {
             id: 'yrg',
             name: 'Peter Griffin',
-            position: 'Cleaner',
+            position: 'Junior Backend разработчик',
             birthDay: null,
-            sex: null,
-            isDismissed: null,
-            colleagues: null
+            sex: '',
+            isDismissed: false,
+            colleagues: []
         }
     ]
 };
