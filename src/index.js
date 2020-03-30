@@ -4,7 +4,7 @@ import './index.scss';
 import App from './App';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import {combineReducers, createStore} from 'redux';
+import { combineReducers, createStore } from 'redux';
 import employeeReducer from './reducers/employeeReducer';
 import currentEmployeeReducer from './reducers/currentEmployeeReducer';
 import positionsReducer from './reducers/positionsReducer';

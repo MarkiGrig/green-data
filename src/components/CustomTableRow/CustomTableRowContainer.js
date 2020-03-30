@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomTableRow from './CustomTableRow';
-import {shallowEqual, useDispatch, useSelector} from 'react-redux';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { selectEmployeeAction } from '../../actions/currentEmployeeActions';
 import { switchErrorMessage } from '../../actions/errorMessageActions';
 

@@ -4,7 +4,7 @@ import EmployeeTableContainer from './components/Table/EmployeeTableContainer';
 import ControlsContainer from './components/Controls/ControlsContainer';
 import EmployeeFormContainer from './components/EmployeeForm/EmployeeFormContainer';
 import DateFnsUtils from '@date-io/date-fns';
-import {MuiPickersUtilsProvider} from '@material-ui/pickers';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 
 function App() {
     return (

@@ -1,8 +1,8 @@
 import React from 'react';
 import Controls from './Controls';
-import {shallowEqual, useDispatch, useSelector} from 'react-redux';
-import {removeEmployeeAction, addEmployeeAction} from '../../actions/employeeActions';
-import {clearCurrentEmployeeAction, selectEmployeeAction} from '../../actions/currentEmployeeActions';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { removeEmployeeAction, addEmployeeAction } from '../../actions/employeeActions';
+import { clearCurrentEmployeeAction, selectEmployeeAction } from '../../actions/currentEmployeeActions';
 import nanoid from 'nanoid';
 import { switchErrorMessage } from '../../actions/errorMessageActions';
 
