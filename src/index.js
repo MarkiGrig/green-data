@@ -41,26 +41,7 @@ const initialState = {
         'Junior Backend разработчик',
         'Уборщик'
     ],
-    employeeState: [
-        {
-            id: 'air',
-            name: 'Peter Griffin Evil',
-            position: 'Уборщик',
-            birthDay: new Date(2012, 11, 12),
-            sex: 'Мужской',
-            isDismissed: true,
-            colleagues: []
-        },
-        {
-            id: 'yrg',
-            name: 'Peter Griffin',
-            position: 'Junior Backend разработчик',
-            birthDay: null,
-            sex: '',
-            isDismissed: false,
-            colleagues: []
-        }
-    ]
+    employeeState: []
 };
 
 const store = createStore(
