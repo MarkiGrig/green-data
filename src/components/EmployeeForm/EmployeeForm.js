@@ -34,12 +34,11 @@ const EmployeeForm = (
     const getSecondaryInfo = (employee) => {
         let resultString = employee.position;
 
-        const day = employee.birthDay.getDate();
-        const month = employee.birthDay.getMonth()+1;
-        const year = employee.birthDay.getFullYear();
-        const date = `${day}.${month}.${year}`;
-
         if (employee.birthDay) {
+            const day = employee.birthDay.getDate();
+            const month = employee.birthDay.getMonth()+1;
+            const year = employee.birthDay.getFullYear();
+            const date = `${day}.${month}.${year}`;
             resultString += ', Родился: ' + date;
         }
         return resultString;
