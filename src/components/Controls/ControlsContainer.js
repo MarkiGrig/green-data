@@ -4,6 +4,7 @@ import {shallowEqual, useDispatch, useSelector} from 'react-redux';
 import {removeEmployeeAction, addEmployeeAction} from '../../actions/employeeActions';
 import {clearCurrentEmployeeAction, selectEmployeeAction} from '../../actions/currentEmployeeActions';
 import nanoid from 'nanoid';
+import { switchErrorMessage } from '../../actions/errorMessageActions';
 
 const ControlsContainer = () => {
     const dispatch = useDispatch();
@@ -11,26 +12,31 @@ const ControlsContainer = () => {
     const currentEmployee = useSelector(state => state.currentEmployeeState, shallowEqual);
 
     const addEmployee = () => {
-        const id = nanoid();
+        if ((!!currentEmployee.name && !!currentEmployee.position) || currentEmployee.id.length === 0) {
+            const id = nanoid();
 
-        const newEmployee = {
-            id: id,
-            name: '',
-            position: '',
-            birthDay: null,
-            sex: '',
-            isDismissed: false,
-            colleagues: []
-        };
+            const newEmployee = {
+                id: id,
+                name: '',
+                position: '',
+                birthDay: null,
+                sex: '',
+                isDismissed: false,
+                colleagues: []
+            };
 
-        dispatch(addEmployeeAction(newEmployee));
-        dispatch(selectEmployeeAction(newEmployee));
+            dispatch(addEmployeeAction(newEmployee));
+            dispatch(selectEmployeeAction(newEmployee));
+        } else {
+            dispatch(switchErrorMessage(true));
+        }
     };
 
     const removeEmployee = () => {
         if (currentEmployee.id !== null) {
             dispatch(removeEmployeeAction(currentEmployee.id));
             dispatch(clearCurrentEmployeeAction());
+            dispatch(switchErrorMessage(false));
         }
     };
 

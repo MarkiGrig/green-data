@@ -26,7 +26,7 @@ const getCellString = (key, rowCell) => {
         } else if (key === 'isDismissed') {
             return rowCell ? 'Да' : 'Нет';
         } else if (key === 'colleagues') {
-            return rowCell.join('; ');
+            return rowCell.map(str => str.split(' ').slice(1).join(' ')).join('; ');
         } else {
             return rowCell;
         }

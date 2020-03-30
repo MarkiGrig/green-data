@@ -12,6 +12,7 @@ import FormGroup from '@material-ui/core/FormGroup';
 import Checkbox from '@material-ui/core/Checkbox';
 import Select from '@material-ui/core/Select';
 import ListItemText from '@material-ui/core/ListItemText';
+import FormHelperText from '@material-ui/core/FormHelperText';
 import Input from '@material-ui/core/Input';
 import './EmployeeForm.scss';
 
@@ -26,7 +27,8 @@ const EmployeeForm = (
         handleSexChange,
         handleStatusChange,
         handleColleagueChange,
-        isActive
+        isActive,
+        errorMessageState
     }) => {
 
     const getSecondaryInfo = (employee) => {
@@ -38,7 +40,7 @@ const EmployeeForm = (
 
     return (
         <Paper className='employee-form'>
-            <FormControl fullWidth required className='employee-form__control'>
+            <FormControl fullWidth required className='employee-form__control' error={ errorMessageState }>
                 <FormLabel className='employee-form__label'>ФИО</FormLabel>
                 <TextField
                     required
@@ -47,8 +49,9 @@ const EmployeeForm = (
                     onChange={ handleNameInput }
                     disabled={ !isActive }
                 />
+                <FormHelperText hidden={ !errorMessageState }>Заполните поле</FormHelperText>
             </FormControl>
-            <FormControl fullWidth required className='employee-form__control'>
+            <FormControl fullWidth required className='employee-form__control' error={ errorMessageState }>
                 <FormLabel className='employee-form__label'>Должность</FormLabel>
                 <TextField
                     select
@@ -64,6 +67,7 @@ const EmployeeForm = (
                         </MenuItem>
                     ))}
                 </TextField>
+                <FormHelperText hidden={ !errorMessageState }>Заполните поле</FormHelperText>
             </FormControl>
             <FormControl fullWidth className='employee-form__control'>
                 <FormLabel className='employee-form__label'>Дата рождения</FormLabel>
@@ -106,7 +110,9 @@ const EmployeeForm = (
                     value={ currentEmployee.colleagues }
                     onChange={ handleColleagueChange }
                     input={ <Input /> }
-                    renderValue={ selected => selected.join('; ') }
+                    renderValue={ selected => selected
+                        .map(str => str.split(' ').slice(1).join(' ')).join('; ')
+                    }
                 >
                     {employees
                         //in order not to include dismissed colleagues
@@ -115,12 +121,12 @@ const EmployeeForm = (
                         .map(employee => (
                             <MenuItem
                                 key={ employee.id+'select' }
-                                value={ employee.name + ', ' + getSecondaryInfo(employee) }
+                                value={ employee.id + ' ' + employee.name + ', ' + getSecondaryInfo(employee) }
                             >
                                 <Checkbox
                                     checked={
                                         currentEmployee.colleagues.indexOf(
-                                            employee.name + ', ' + getSecondaryInfo(employee)
+                                            employee.id + ' ' + employee.name + ', ' + getSecondaryInfo(employee)
                                         ) > -1
                                     }
                                     color="primary"

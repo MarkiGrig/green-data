@@ -8,14 +8,17 @@ import {combineReducers, createStore} from 'redux';
 import employeeReducer from './reducers/employeeReducer';
 import currentEmployeeReducer from './reducers/currentEmployeeReducer';
 import positionsReducer from './reducers/positionsReducer';
+import errorMessageReducer from './reducers/errorMessageReducer';
 
 const reducers = combineReducers({
     employeeState: employeeReducer,
     currentEmployeeState: currentEmployeeReducer,
-    positionsState: positionsReducer
+    positionsState: positionsReducer,
+    errorMessageState: errorMessageReducer
 });
 
 const initialState = {
+    errorMessageState: false,
     currentEmployeeState: {
         id: '',
         name: '',

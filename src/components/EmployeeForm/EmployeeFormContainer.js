@@ -3,14 +3,16 @@ import EmployeeForm from './EmployeeForm';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { changeCurrentEmployeeAction } from '../../actions/currentEmployeeActions';
 import { changeEmployeeAction } from '../../actions/employeeActions';
+import { switchErrorMessage } from '../../actions/errorMessageActions';
 
 const EmployeeFormContainer = () => {
     const dispatch = useDispatch();
 
-    const {positions, employees, currentEmployee} = useSelector(state => ({
+    const {positions, employees, currentEmployee, errorMessageState} = useSelector(state => ({
         positions: state.positionsState,
         employees: state.employeeState,
-        currentEmployee: state.currentEmployeeState
+        currentEmployee: state.currentEmployeeState,
+        errorMessageState: state.errorMessageState
     }), shallowEqual);
 
     const handleNameInput = (e) => {
@@ -25,6 +27,7 @@ const EmployeeFormContainer = () => {
         };
         dispatch(changeCurrentEmployeeAction(employee));
         dispatch(changeEmployeeAction(currentEmployee.id, employee));
+        dispatch(switchErrorMessage(false));
     };
 
     const handleDateChange = (date) => {
@@ -53,6 +56,7 @@ const EmployeeFormContainer = () => {
         };
         dispatch(changeCurrentEmployeeAction(employee));
         dispatch(changeEmployeeAction(currentEmployee.id, employee));
+        dispatch(switchErrorMessage(false));
     };
 
     const handleSexChange = (e) => {
@@ -109,6 +113,7 @@ const EmployeeFormContainer = () => {
             handleStatusChange={ handleStatusChange }
             handleColleagueChange={ handleColleagueChange }
             isActive={ !!currentEmployee.id }
+            errorMessageState={ errorMessageState }
         />
     );
 };
