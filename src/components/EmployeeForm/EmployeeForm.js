@@ -40,7 +40,10 @@ const EmployeeForm = (
 
     return (
         <Paper className='employee-form'>
-            <FormControl fullWidth required className='employee-form__control' error={ errorMessageState }>
+            <FormControl
+                fullWidth required className='employee-form__control'
+                error={ errorMessageState && currentEmployee.name.length === 0 }
+            >
                 <FormLabel className='employee-form__label'>ФИО</FormLabel>
                 <TextField
                     required
@@ -49,9 +52,15 @@ const EmployeeForm = (
                     onChange={ handleNameInput }
                     disabled={ !isActive }
                 />
-                <FormHelperText hidden={ !errorMessageState }>Заполните поле</FormHelperText>
+                <FormHelperText hidden={ !errorMessageState || currentEmployee.name.length !== 0 }>
+                    Заполните поле
+                </FormHelperText>
             </FormControl>
-            <FormControl fullWidth required className='employee-form__control' error={ errorMessageState }>
+
+            <FormControl
+                fullWidth required className='employee-form__control'
+                error={ errorMessageState && currentEmployee.position.length === 0 }
+            >
                 <FormLabel className='employee-form__label'>Должность</FormLabel>
                 <TextField
                     select
@@ -67,8 +76,11 @@ const EmployeeForm = (
                         </MenuItem>
                     ))}
                 </TextField>
-                <FormHelperText hidden={ !errorMessageState }>Заполните поле</FormHelperText>
+                <FormHelperText hidden={ !errorMessageState || currentEmployee.position.length !== 0 }>
+                    Заполните поле
+                </FormHelperText>
             </FormControl>
+
             <FormControl fullWidth className='employee-form__control'>
                 <FormLabel className='employee-form__label'>Дата рождения</FormLabel>
                 <DatePicker
@@ -82,6 +94,7 @@ const EmployeeForm = (
                     disabled={ !isActive }
                 />
             </FormControl>
+
             <FormControl fullWidth disabled={ !isActive } className='employee-form__control'>
                 <FormLabel className='employee-form__label'>Пол</FormLabel>
                 <RadioGroup row name="sex" value={ currentEmployee.sex } onChange={ handleSexChange }>
@@ -89,6 +102,7 @@ const EmployeeForm = (
                     <FormControlLabel value="Женский" control={ <Radio color="primary"/> } label="Женский" />
                 </RadioGroup>
             </FormControl>
+
             <FormControl fullWidth disabled={ !isActive } className='employee-form__control'>
                 <FormLabel className='employee-form__label'>Статус</FormLabel>
                 <FormGroup row>
@@ -103,6 +117,7 @@ const EmployeeForm = (
                     />
                 </FormGroup>
             </FormControl>
+
             <FormControl fullWidth disabled={ !isActive } className='employee-form__control'>
                 <FormLabel className='employee-form__label'>Коллеги</FormLabel>
                 <Select
