@@ -24,7 +24,12 @@ const Table = ({ data, columns, row }) => (
                                 }
                             >
                                 <div className={ `table__header-cell table__header-cell_${column.id}` }>
-                                    <Typography variant='h6'>{column.label}</Typography>
+                                    <Typography
+                                        variant='h6'
+                                        className='table__header-cell-text'
+                                    >
+                                        {column.label}
+                                    </Typography>
                                 </div>
                             </TableCell>
                         ))}

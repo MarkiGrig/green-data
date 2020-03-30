@@ -8,7 +8,15 @@
         flex-direction: column;
 
         &_left {
-            width: 71%;
+            width: 73%;
         }
+    }
+
+    &__controls {
+        align-self: flex-end;
+    }
+
+    &__form {
+        width: 25%;
     }
 }

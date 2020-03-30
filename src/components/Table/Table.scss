@@ -22,7 +22,7 @@
     &__header-cell-container,
     &__data-cell-container {
         &_fullName {
-            $width: 350px;
+            $width: 200px;
             width: $width;
             .table__header-cell,
             .table__data-cell {
@@ -31,7 +31,7 @@
         }
 
         &_position {
-            $width: 153px;
+            $width: 143px;
             width: $width;
             .table__header-cell,
             .table__data-cell {
@@ -40,7 +40,7 @@
         }
 
         &_birthDate {
-            $width: 144px;
+            $width: 129px;
             width: $width;
             .table__header-cell,
             .table__data-cell {
@@ -58,7 +58,7 @@
         }
 
         &_isDismissed {
-            $width: 100px;
+            $width: 90px;
             width: $width;
             .table__header-cell,
             .table__data-cell {
@@ -70,6 +70,12 @@
     &__header-cell,
     &__data-cell {
         margin: 0;
+    }
+
+    &__header-cell {
+        &-text {
+            font-size: 18px !important;
+        }
     }
 
     &__data-cell {

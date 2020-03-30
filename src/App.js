@@ -12,9 +12,13 @@ function App() {
             <div className="App">
                 <div className="App__group App__group_left">
                     <EmployeeTableContainer />
-                    <ControlsContainer />
+                    <div className='App__controls'>
+                        <ControlsContainer />
+                    </div>
                 </div>
-                <EmployeeFormContainer />
+                <div className='App__form'>
+                    <EmployeeFormContainer />
+                </div>
             </div>
         </MuiPickersUtilsProvider>
     );
