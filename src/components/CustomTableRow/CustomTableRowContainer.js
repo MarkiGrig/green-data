@@ -10,7 +10,10 @@ const CustomTableRowContainer = ({ row, columns }) => {
     const currentEmployee = useSelector(state => state.currentEmployeeState, shallowEqual);
 
     const handleRowClick = () => {
-        if ((!!currentEmployee.name && !!currentEmployee.position) || currentEmployee.id.length === 0) {
+        if (
+            (!!currentEmployee.name && !!currentEmployee.position) ||
+            currentEmployee.id.length === 0
+        ) {
             dispatch(selectEmployeeAction(row));
         } else {
             dispatch(switchErrorMessage(true));

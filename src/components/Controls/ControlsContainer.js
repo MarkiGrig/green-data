@@ -12,9 +12,11 @@ const ControlsContainer = () => {
     const currentEmployee = useSelector(state => state.currentEmployeeState, shallowEqual);
 
     const addEmployee = () => {
-        if ((!!currentEmployee.name && !!currentEmployee.position) || currentEmployee.id.length === 0) {
+        if (
+            (!!currentEmployee.name && !!currentEmployee.position) ||
+            currentEmployee.id.length === 0
+        ) {
             const id = nanoid();
-
             const newEmployee = {
                 id: id,
                 name: '',
@@ -24,7 +26,6 @@ const ControlsContainer = () => {
                 isDismissed: false,
                 colleagues: []
             };
-
             dispatch(addEmployeeAction(newEmployee));
             dispatch(selectEmployeeAction(newEmployee));
         } else {

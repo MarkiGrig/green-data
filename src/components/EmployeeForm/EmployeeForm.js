@@ -32,17 +32,24 @@ const EmployeeForm = (
     }) => {
 
     const getSecondaryInfo = (employee) => {
-        return `${employee.position}` + (employee.birthDay ?
-            `, Родился: ${employee.birthDay.getDate()}.` +
-            `${employee.birthDay.getMonth()+1}.${employee.birthDay.getFullYear()}`
-            : '');
+        let resultString = employee.position;
+
+        const day = employee.birthDay.getDate();
+        const month = employee.birthDay.getMonth()+1;
+        const year = employee.birthDay.getFullYear();
+        const date = `${day}.${month}.${year}`;
+
+        if (employee.birthDay) {
+            resultString += ', Родился: ' + date;
+        }
+        return resultString;
     };
 
     return (
         <Paper className='employee-form'>
             <FormControl
                 fullWidth required className='employee-form__control'
-                error={ errorMessageState && currentEmployee.name.length === 0 }
+                error={ errorMessageState && !currentEmployee.name.length }
             >
                 <FormLabel className='employee-form__label'>ФИО</FormLabel>
                 <TextField
@@ -59,7 +66,7 @@ const EmployeeForm = (
 
             <FormControl
                 fullWidth required className='employee-form__control'
-                error={ errorMessageState && currentEmployee.position.length === 0 }
+                error={ errorMessageState && !currentEmployee.position.length }
             >
                 <FormLabel className='employee-form__label'>Должность</FormLabel>
                 <TextField
@@ -130,8 +137,6 @@ const EmployeeForm = (
                     }
                 >
                     {employees
-                        //in order not to include dismissed colleagues
-                        /*.filter(employee => !employee.isDismissed && employee.id !== currentEmployee.id)*/
                         .filter(employee => employee.id !== currentEmployee.id)
                         .map(employee => (
                             <MenuItem
